@@ -1,26 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-body: "Barlow", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg-deep: #f5f3ef;
+  --bg-card: #ffffff;
+  --bg-cell: #fafaf7;
+  --bg-cell-hover: #f0ede6;
+  --bg-header: #f8f6f2;
+  --border: #d9d4c9;
+  --border-dim: #e8e4dc;
+
+  --text-primary: #1a1a1a;
+  --text-muted: #7a7265;
+  --text-dim: #b5ad9e;
+
+  --accent: #ff9900;
+  --accent-dim: rgba(255, 153, 0, 0.10);
+  --accent-glow: rgba(255, 153, 0, 0.20);
+
+  /* Event type colors */
+  --ev-seminer: #2b74b8;
+  --ev-seminer-bg: rgba(43, 116, 184, 0.12);
+  --ev-uygulama: #1f8f5c;
+  --ev-uygulama-bg: rgba(31, 143, 92, 0.12);
+  --ev-bayram: #b83c3c;
+  --ev-bayram-bg: rgba(184, 60, 60, 0.12);
+  --ev-egitim: #7b4fc9;
+  --ev-egitim-bg: rgba(123, 79, 201, 0.12);
+  --ev-etkinlik: #c97a00;
+  --ev-etkinlik-bg: rgba(201, 122, 0, 0.12);
+  --ev-2yil: #b8622a;
+  --ev-2yil-bg: rgba(184, 98, 42, 0.12);
+  --ev-kulup: #1f8aaa;
+  --ev-kulup-bg: rgba(31, 138, 170, 0.12);
+}
+
+html {
+  background: var(--bg-deep);
+  color: var(--text-primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+
+#__next,
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+@layer utilities {
+  /* Font utilities */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Event type color utilities */
+  .ev-seminer {
+    color: var(--ev-seminer);
+    background: var(--ev-seminer-bg);
+  }
+  .ev-uygulama {
+    color: var(--ev-uygulama);
+    background: var(--ev-uygulama-bg);
+  }
+  .ev-bayram {
+    color: var(--ev-bayram);
+    background: var(--ev-bayram-bg);
+  }
+  .ev-egitim {
+    color: var(--ev-egitim);
+    background: var(--ev-egitim-bg);
+  }
+  .ev-etkinlik {
+    color: var(--ev-etkinlik);
+    background: var(--ev-etkinlik-bg);
+  }
+  .ev-2yil {
+    color: var(--ev-2yil);
+    background: var(--ev-2yil-bg);
+  }
+  .ev-kulup {
+    color: var(--ev-kulup);
+    background: var(--ev-kulup-bg);
+  }
+
+  .ev-seminer-border {
+    border-left-color: var(--ev-seminer);
+  }
+  .ev-uygulama-border {
+    border-left-color: var(--ev-uygulama);
+  }
+  .ev-bayram-border {
+    border-left-color: var(--ev-bayram);
+  }
+  .ev-egitim-border {
+    border-left-color: var(--ev-egitim);
+  }
+  .ev-etkinlik-border {
+    border-left-color: var(--ev-etkinlik);
+  }
+  .ev-2yil-border {
+    border-left-color: var(--ev-2yil);
+  }
+  .ev-kulup-border {
+    border-left-color: var(--ev-kulup);
+  }
+
+  /* Animations */
+  .animate-fadeIn {
+    animation: fadeIn 0.25s ease forwards;
+  }
+  .animate-slideUp {
+    animation: slideUp 0.2s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
