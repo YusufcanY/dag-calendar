@@ -12,7 +12,7 @@ import { SearchInput } from "@/components/SearchInput";
 import { TopographicBackground } from "@/components/TopographicBackground";
 
 export default function Page() {
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 3, 1));
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [filter, setFilter] = useState<EducationYearFilter>("all");
   const [selectedEvent, setSelectedEvent] = useState<DagEvent | null>(null);
 
