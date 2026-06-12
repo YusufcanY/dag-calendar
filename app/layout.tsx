@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "DAG 2026 Eğitim Takvimi",
   description: "Doğa Aktiviteleri Grubu 2026 yılı eğitim ve faaliyet takvimi",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
