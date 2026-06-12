@@ -31,7 +31,9 @@ export function PrereqTag({ code }: PrereqTagProps) {
         transition: "background 0.15s, border-color 0.15s",
       }}
     >
-      <span style={{ color: open && name ? "var(--accent)" : "var(--text-muted)" }}>
+      <span
+        style={{ color: open && name ? "var(--accent)" : "var(--text-muted)" }}
+      >
         {code}
       </span>
       {open && name && (
@@ -40,7 +42,6 @@ export function PrereqTag({ code }: PrereqTagProps) {
             fontFamily: "var(--font-body)",
             fontSize: "10px",
             color: "var(--text-primary)",
-            whiteSpace: "nowrap",
             lineHeight: 1.3,
           }}
         >

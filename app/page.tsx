@@ -39,56 +39,60 @@ export default function Page() {
       <TopographicBackground />
       {/* Header */}
       <header
-        className="sticky top-0 z-20 px-6 py-4"
+        className="sticky top-0 z-20 px-4 sm:px-6 py-3"
         style={{
           background: "rgba(245,243,239,0.92)",
           backdropFilter: "blur(12px)",
           borderBottom: "1px solid var(--border)",
         }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center gap-3">
-          {/* Logo + Search (always on the same row) */}
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <div className="flex items-center gap-3 shrink-0">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center font-display font-black text-lg shrink-0"
-                style={{
-                  background: "var(--accent)",
-                  color: "#0c1410",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                DAG
-              </div>
-              <div>
-                <h1
-                  className="font-display font-black tracking-wide leading-none"
-                  style={{ color: "var(--text-primary)", fontSize: "18px" }}
-                >
-                  2026 EĞİTİM TAKVİMİ
-                </h1>
-                <p
-                  className="font-mono text-[10px] tracking-widest"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  DOĞA AKTİVİTELERİ GRUBU
-                </p>
-              </div>
+        <div className="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3">
+          {/* Logo */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center font-display font-black text-base sm:text-lg shrink-0"
+              style={{
+                background: "var(--accent)",
+                color: "#0c1410",
+                letterSpacing: "0.05em",
+              }}
+            >
+              DAG
             </div>
-
-            {/* Search — grows to fill remaining row space on mobile */}
-            <div className="flex-1 sm:flex-none">
-              <SearchInput events={allEvents} onSelect={setSelectedEvent} />
+            <div className="hidden sm:block">
+              <h1
+                className="font-display font-black tracking-wide leading-none"
+                style={{ color: "var(--text-primary)", fontSize: "18px" }}
+              >
+                2026 EĞİTİM TAKVİMİ
+              </h1>
+              <p
+                className="font-mono text-[10px] tracking-widest"
+                style={{ color: "var(--text-muted)" }}
+              >
+                DOĞA AKTİVİTELERİ GRUBU
+              </p>
             </div>
           </div>
 
-          {/* Filters */}
-          <Filters active={filter} onChange={setFilter} />
+          {/* Search */}
+          <div className="flex-1 min-w-0 sm:flex-none sm:w-72 sm:ml-auto">
+            <SearchInput events={allEvents} onSelect={setSelectedEvent} />
+          </div>
+
+          {/* Filters — desktop only */}
+          <div className="hidden sm:block">
+            <Filters active={filter} onChange={setFilter} />
+          </div>
         </div>
       </header>
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
+        {/* Filters — mobile only */}
+        <div className="sm:hidden mb-4">
+          <Filters active={filter} onChange={setFilter} />
+        </div>
         <Legend />
         <Calendar
           year={year}

@@ -17,15 +17,15 @@ const FILTER_OPTIONS: { value: EducationYearFilter; label: string }[] = [
 
 export function Filters({ active, onChange }: FiltersProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1 sm:gap-2 shrink-0">
       <span
-        className="text-xs font-display tracking-widest uppercase"
+        className="inline text-xs font-display tracking-widest uppercase"
         style={{ color: "var(--text-muted)" }}
       >
         Filtre
       </span>
       <div
-        className="flex items-center gap-1 p-1 rounded-lg"
+        className="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 rounded-lg"
         style={{
           background: "var(--bg-card)",
           border: "1px solid var(--border)",
@@ -35,7 +35,7 @@ export function Filters({ active, onChange }: FiltersProps) {
           <button
             key={value}
             onClick={() => onChange(value)}
-            className="px-3 py-1.5 rounded-md text-xs font-medium font-display tracking-wide transition-all cursor-pointer"
+            className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs font-medium font-display tracking-wide transition-all cursor-pointer"
             style={
               active === value
                 ? {

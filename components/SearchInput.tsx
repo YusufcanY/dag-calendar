@@ -55,7 +55,7 @@ export function SearchInput({ events, onSelect }: SearchInputProps) {
   }
 
   return (
-    <div ref={containerRef} style={{ position: "relative", minWidth: "200px", width: "100%" }}>
+    <div ref={containerRef} style={{ position: "relative", width: "100%" }}>
       {/* Input box */}
       <div
         style={{
@@ -132,8 +132,9 @@ export function SearchInput({ events, onSelect }: SearchInputProps) {
           style={{
             position: "absolute",
             top: "100%",
+            right: "auto",
             left: 0,
-            right: 0,
+            width: "100%",
             background: "var(--bg-card)",
             border: "1px solid var(--border)",
             borderTop: "none",
