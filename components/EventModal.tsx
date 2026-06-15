@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import type { DagEvent } from "@/types";
 import { getEventColors } from "@/lib/eventColors";
 import { TURKISH_MONTHS } from "@/lib/calendar";
-import { PrereqTag } from "./PrereqTag";
+import { codeToName } from "@/data/events";
 
 interface EventModalProps {
   event: DagEvent;
@@ -50,10 +50,7 @@ export function EventModal({ event, onClose }: EventModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Color accent bar */}
-        <div
-          className="h-1 w-full"
-          style={{ background: colors.dot }}
-        />
+        <div className="h-1 w-full" style={{ background: colors.dot }} />
 
         <div className="p-6">
           {/* Header */}
@@ -112,7 +109,7 @@ export function EventModal({ event, onClose }: EventModalProps) {
 
           {/* Details */}
           <div
-            className="rounded-lg overflow-hidden divide-y"
+            className="rounded-lg overflow-hidden divide-y divide-[#f0ede6]"
             style={{
               background: "var(--bg-cell)",
               border: "1px solid var(--border-dim)",
@@ -122,7 +119,10 @@ export function EventModal({ event, onClose }: EventModalProps) {
             {/* Code */}
             {event.code && (
               <Row label="Kod">
-                <span className="font-mono text-sm" style={{ color: "var(--accent)" }}>
+                <span
+                  className="font-mono text-sm"
+                  style={{ color: "var(--accent)" }}
+                >
                   {event.code}
                 </span>
               </Row>
@@ -133,7 +133,9 @@ export function EventModal({ event, onClose }: EventModalProps) {
               <span
                 className="text-sm"
                 style={{
-                  color: event.startDate ? "var(--text-primary)" : "var(--text-muted)",
+                  color: event.startDate
+                    ? "var(--text-primary)"
+                    : "var(--text-muted)",
                   fontStyle: event.startDate ? "normal" : "italic",
                 }}
               >
@@ -144,9 +146,29 @@ export function EventModal({ event, onClose }: EventModalProps) {
             {/* Prerequisites */}
             {event.prerequisites.length > 0 && (
               <Row label="Ön Koşul">
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-col gap-1.5">
                   {event.prerequisites.map((prereq) => (
-                    <PrereqTag key={prereq} code={prereq} />
+                    <div key={prereq} className="flex items-center gap-2">
+                      <span
+                        className="font-mono text-[10px] font-medium px-1.5 py-0.5 rounded shrink-0"
+                        style={{
+                          color: "var(--accent)",
+                          background: "var(--accent-dim)",
+                          border: "1px solid var(--accent-glow)",
+                          letterSpacing: "0.03em",
+                        }}
+                      >
+                        {prereq}
+                      </span>
+                      {codeToName[prereq] && (
+                        <span
+                          className="text-xs leading-tight"
+                          style={{ color: "var(--text-muted)" }}
+                        >
+                          {codeToName[prereq]}
+                        </span>
+                      )}
+                    </div>
                   ))}
                 </div>
               </Row>
