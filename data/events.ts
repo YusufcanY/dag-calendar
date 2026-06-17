@@ -224,8 +224,8 @@ export const events: DagEvent[] = [
     type: "Seminer",
     educationYear: "I",
     prerequisites: [],
-    startDate: "2026-05-13",
-    endDate: "2026-05-13",
+    startDate: "2026-06-03",
+    endDate: "2026-06-03",
     isMandatory: false,
   },
   {
@@ -235,8 +235,8 @@ export const events: DagEvent[] = [
     type: "Uygulama",
     educationYear: "I",
     prerequisites: ["KYT1-U", "KYT2-S"],
-    startDate: "2026-05-16",
-    endDate: "2026-05-17",
+    startDate: "2026-06-06",
+    endDate: "2026-06-07",
     isMandatory: false,
   },
   {
