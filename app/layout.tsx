@@ -16,6 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr" className="h-full">
+      <head>
+        <script
+          defer
+          src="UMAMI_/script.js"
+          data-website-id="d79b8f82-697e-4eb5-9228-9aa80c80ec29"
+        />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );
