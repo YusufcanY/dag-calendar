@@ -10,11 +10,21 @@ import { TbdEvents } from "@/components/TbdEvents";
 import { EventModal } from "@/components/EventModal";
 import { SearchInput } from "@/components/SearchInput";
 import { TopographicBackground } from "@/components/TopographicBackground";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Page() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [filter, setFilter] = useState<EducationYearFilter>("all");
   const [selectedEvent, setSelectedEvent] = useState<DagEvent | null>(null);
+
+  const handleSelectEvent = (event: DagEvent) => {
+    trackEvent("event-modal-open", {
+      id: event.id,
+      name: event.name,
+      type: event.type,
+    });
+    setSelectedEvent(event);
+  };
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -77,7 +87,7 @@ export default function Page() {
 
           {/* Search */}
           <div className="flex-1 min-w-0 sm:flex-none sm:w-72 sm:ml-auto">
-            <SearchInput events={allEvents} onSelect={setSelectedEvent} />
+            <SearchInput events={allEvents} onSelect={handleSelectEvent} />
           </div>
 
           {/* Filters — desktop only */}
@@ -98,13 +108,13 @@ export default function Page() {
           year={year}
           month={month}
           events={scheduledEvents}
-          onEventClick={setSelectedEvent}
+          onEventClick={handleSelectEvent}
           onPrevMonth={() => setCurrentDate((d) => addMonths(d, -1))}
           onNextMonth={() => setCurrentDate((d) => addMonths(d, 1))}
         />
 
         {/* TBD Events */}
-        <TbdEvents events={tbdEvents} onEventClick={setSelectedEvent} />
+        <TbdEvents events={tbdEvents} onEventClick={handleSelectEvent} />
       </main>
 
       {/* Event detail modal */}
