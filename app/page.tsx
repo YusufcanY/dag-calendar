@@ -21,17 +21,17 @@ export default function Page() {
 
   const filteredEvents = useMemo(
     () => filterEvents(allEvents, filter),
-    [filter]
+    [filter],
   );
 
   const tbdEvents = useMemo(
     () => filteredEvents.filter((e) => !e.startDate),
-    [filteredEvents]
+    [filteredEvents],
   );
 
   const scheduledEvents = useMemo(
     () => filteredEvents.filter((e) => e.startDate !== null),
-    [filteredEvents]
+    [filteredEvents],
   );
 
   return (
@@ -130,7 +130,13 @@ export default function Page() {
           href="https://www.linkedin.com/in/yusufcan-yilmaz"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}
+          data-umami-event="outbound-link-click"
+          data-umami-event-url="https://www.linkedin.com/in/yusufcan-yilmaz"
+          style={{
+            color: "var(--accent)",
+            textDecoration: "none",
+            fontWeight: 600,
+          }}
         >
           Yusufcan Yılmaz
         </a>
