@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const UMAMI_HOST = "UMAMI_";
+const UMAMI_HOST = process.env.UMAMI_HOST;
 
 const nextConfig: NextConfig = {
   output: "standalone",

@@ -14,6 +14,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ARG UMAMI_HOST
+ENV UMAMI_HOST=$UMAMI_HOST
+
 RUN npm run build
 
 # Production image
