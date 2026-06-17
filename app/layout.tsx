@@ -19,8 +19,9 @@ export default function RootLayout({
       <head>
         <script
           defer
-          src="UMAMI_/script.js"
+          src="/stats/script.js"
           data-website-id="d79b8f82-697e-4eb5-9228-9aa80c80ec29"
+          data-host-url="/stats"
         />
       </head>
       <body className="min-h-full">{children}</body>
