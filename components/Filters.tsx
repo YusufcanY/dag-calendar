@@ -58,7 +58,7 @@ export function Filters({ active, onChange }: FiltersProps) {
 
 export function Legend() {
   return (
-    <div className="flex items-center gap-4 flex-wrap py-3 px-1">
+    <div className="flex items-center gap-4 flex-nowrap sm:flex-wrap overflow-x-auto py-3 px-1 -mx-3 sm:mx-0 pl-4 sm:pl-1 [scrollbar-width:none]">
       {Object.entries(colorMap).map(([type, config]) => (
         <div key={type} className="flex items-center gap-1.5">
           <span
@@ -66,7 +66,7 @@ export function Legend() {
             style={{ background: config.dot }}
           />
           <span
-            className="text-[11px] font-display tracking-wide"
+            className="text-[11px] font-display tracking-wide whitespace-nowrap"
             style={{ color: "var(--text-muted)" }}
           >
             {config.label}

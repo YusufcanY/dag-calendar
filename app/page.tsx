@@ -98,7 +98,7 @@ export default function Page() {
       </header>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
         {/* Filters — mobile only */}
         <div className="sm:hidden mb-4">
           <Filters active={filter} onChange={setFilter} />
@@ -111,6 +111,7 @@ export default function Page() {
           onEventClick={handleSelectEvent}
           onPrevMonth={() => setCurrentDate((d) => addMonths(d, -1))}
           onNextMonth={() => setCurrentDate((d) => addMonths(d, 1))}
+          onToday={() => setCurrentDate(new Date())}
         />
 
         {/* TBD Events */}
