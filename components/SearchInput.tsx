@@ -100,7 +100,8 @@ export function SearchInput({ events, onSelect }: SearchInputProps) {
             outline: "none",
             color: "var(--text-primary)",
             fontFamily: "var(--font-body)",
-            fontSize: "13px",
+            // 16px prevents iOS browsers from zooming in on focus.
+            fontSize: "16px",
             width: "100%",
           }}
         />
